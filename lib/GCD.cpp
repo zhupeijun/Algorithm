@@ -1,0 +1,9 @@
+int kgcd(int a, int b){
+	if (a == 0) return b;
+	if (b == 0) return a;
+	if (!(a & 1) && !(b & 1)) return kgcd(a>>1, b>>1) << 1;
+	else if (!(b & 1)) return kgcd(a, b>>1);
+	else if (!(a & 1)) return kgcd(a>>1, b);
+	else return kgcd(abs(a - b), min(a, b));
+}
+两数的乘积再除以两数的最大公约数就是最小公倍数
