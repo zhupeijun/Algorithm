@@ -21,7 +21,7 @@ using namespace std;
 typedef long long ll;
 typedef pair<int, int> pii;
 
-int a[1005];
+int a[15];
 
 void solve() {
     int N, M;
@@ -29,16 +29,23 @@ void solve() {
     for (int i = 0; i < N; ++i) {
         scanf("%d", &a[i]);
     }
-
-    while (M--) {
-        int l, r;
-        double ans = 0;
-        scanf("%d %d", &l, &r);
-        for (int j = l; j <= r; ++j) {
-            ans += log(a[j]);
+    for (int q = 0; q < M; ++q) {
+        int al, ar;
+        scanf("%d %d", &al, &ar);
+        double l = 1, r = 1000000005;
+        while (fabs(l - r) >= 1e-6) {
+            double mid = (l + r) / 2.0;
+            double tmp = 1;
+            for (int j = al; j <= ar; ++j) {
+                tmp = tmp * a[j] / mid;
+            }
+            if (tmp > 1) {
+                l = mid;
+            } else {
+                r = mid;
+            }
         }
-        ans /= (r - l + 1);
-        printf("%.9lf\n", exp(ans));
+        printf("%.9lf\n", l);
     }
 }
 
