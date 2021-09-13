@@ -6,3 +6,4 @@
 *.txt
 *.exe
 .vscode
+.DS_Store
