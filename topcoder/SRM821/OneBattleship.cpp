@@ -29,20 +29,20 @@ public:
         int n = sz(g), m = sz(g[0]);
         vector<int> c(3);
         rep(i, n) rep(j, m) {
-                if (g[i][j] == '.') ++c[(i+j)%3];
-            }
+            if (g[i][j] == '.') ++c[(i+j)%3];
+        }
 
         int minv = INT_MAX, mink = 0;
         rep(i, 3) if (minv > c[i]) {
-                minv = c[i];
-                mink = i;
-            }
+            minv = c[i];
+            mink = i;
+        }
 
         rep(i, n) rep(j, m) {
-                if (g[i][j] == '.' && (i+j)%3 == mink) {
-                    g[i][j] = '*';
-                }
+            if (g[i][j] == '.' && (i+j)%3 == mink) {
+                g[i][j] = '*';
             }
+        }
         return g;
     }
 };
